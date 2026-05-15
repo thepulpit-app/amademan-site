@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/app",
+      "destination": "https://app.amademan.com",
+      "permanent": false
+    }
+  ]
+}
