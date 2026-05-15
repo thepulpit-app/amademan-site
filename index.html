@@ -47,7 +47,8 @@ nav.scrolled .nav-wordmark-sub{color:var(--muted)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:flex-end;padding:0 4rem 6rem;position:relative;border-bottom:1px solid rgba(244,239,230,0.08);background:var(--espresso);overflow:hidden}
-.hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:end;position:relative;overflow:hidden}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:end;position:relative}
+.max{max-width:1200px;margin:0 auto;width:100%}
 .hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-family:'Cormorant Garamond',serif;font-size:clamp(160px,22vw,260px);font-weight:300;color:rgba(244,239,230,0.04);line-height:1;pointer-events:none;user-select:none;z-index:0}
 .hero-left{position:relative;z-index:1}
 .hero-label{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(244,239,230,0.4);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem}
@@ -256,25 +257,29 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
-  <div class="hero-ghost">M</div>
-  <div class="hero-left">
-    <p class="hero-label">Temitope Ajijola Empowerment and Leadership Foundation</p>
-    <h1 class="hero-h1">Developing<br/>Men.<br/>Building <em>Leaders.</em><br/>Transforming<br/>Communities.</h1>
-    <div class="hero-actions">
+    <div class="hero-ghost">M</div>
+    <div class="hero-left">
+      <p class="hero-label">Temitope Ajijola Empowerment and Leadership Foundation</p>
+      <h1 class="hero-h1">Developing<br/>Men.<br/>Building <em>Leaders.</em><br/>Transforming<br/>Communities.</h1>
+      <div class="hero-actions">
+        <a href="#conference" class="btn-dark">Upcoming Conference</a>
+        <a href="#about" class="btn-outline">Our Mission</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p>A MADE MAN is a movement dedicated to equipping men with the tools, direction and community they need to thrive personally, professionally and purposefully.</p>
+      <p>From the boy finding his footing to the professional building his legacy &mdash; A MADE MAN speaks to every stage of a man's journey.</p>
+      <div class="hero-stats">
+        <div><div class="stat-n">7+</div><div class="stat-l">Years Running</div></div>
+        <div><div class="stat-n">1k+</div><div class="stat-l">Men Reached</div></div>
+        <div><div class="stat-n">NG</div><div class="stat-l">&amp; Beyond</div></div>
+      </div>
+    </div>
+    <div class="hero-mobile-actions" style="display:none">
       <a href="#conference" class="btn-dark">Upcoming Conference</a>
       <a href="#about" class="btn-outline">Our Mission</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <p>A MADE MAN is a movement dedicated to equipping men with the tools, direction and community they need to thrive personally, professionally and purposefully.</p>
-    <p>From the boy finding his footing to the professional building his legacy &mdash; A MADE MAN speaks to every stage of a man's journey.</p>
-    <div class="hero-stats">
-      <div><div class="stat-n">7+</div><div class="stat-l">Years Running</div></div>
-      <div><div class="stat-n">1k+</div><div class="stat-l">Men Reached</div></div>
-      <div><div class="stat-n">NG</div><div class="stat-l">&amp; Beyond</div></div>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+    <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
   </div>
 </section>
 
