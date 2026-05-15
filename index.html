@@ -230,6 +230,41 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
   .form-r2{grid-template-columns:1fr}
   .app-strip{flex-direction:column;align-items:flex-start}
 }
+
+/* ── MOBILE HERO FIX ── */
+@media screen and (max-width: 960px) {
+  .hero { padding: 5rem 1.5rem 4rem; overflow-x: hidden; }
+  .hero-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  .hero-ghost { display: none; }
+  .hero-left { order: 1; width: 100%; }
+  .hero-left .hero-actions { display: none !important; }
+  .hero-h1 { font-size: clamp(2.4rem, 9vw, 3.5rem); }
+  .hero-right {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0 !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(244,239,230,0.1);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .hero-mobile-actions {
+    display: flex !important;
+    order: 3;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .hero-stats { flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+  .hero-scroll { display: none !important; }
+}
 </style>
 </head>
 <body>
