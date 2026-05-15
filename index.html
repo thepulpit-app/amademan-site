@@ -41,8 +41,9 @@ nav.scrolled{padding:0.85rem 4rem;background:rgba(244,239,230,0.97);border-color
 .nav-portal:hover{background:var(--burg-lt)!important}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;padding:0 4rem 6rem;position:relative;border-bottom:1px solid var(--border)}
-.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-family:'Cormorant Garamond',serif;font-size:clamp(160px,22vw,260px);font-weight:300;color:rgba(26,14,14,0.03);line-height:1;pointer-events:none;user-select:none}
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:0 4rem 6rem;position:relative;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:end;position:relative}
+.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-family:'Cormorant Garamond',serif;font-size:clamp(160px,22vw,260px);font-weight:300;color:rgba(26,14,14,0.03);line-height:1;pointer-events:none;user-select:none;z-index:0}
 .hero-left{position:relative;z-index:1}
 .hero-label{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem}
 .hero-label::before{content:'';display:block;width:22px;height:1px;background:var(--muted)}
@@ -58,7 +59,7 @@ nav.scrolled{padding:0.85rem 4rem;background:rgba(244,239,230,0.97);border-color
 .hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
 .stat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--espresso);line-height:1;margin-bottom:0.2rem}
 .stat-l{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
-.hero-scroll{position:absolute;bottom:2.5rem;right:4rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase}
+.hero-scroll{position:absolute;bottom:2.5rem;right:0;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--muted),transparent);animation:spulse 2s ease-in-out infinite}
 @keyframes spulse{0%,100%{opacity:.3}50%{opacity:1}}
 
@@ -249,6 +250,7 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="hero-inner">
   <div class="hero-ghost">M</div>
   <div class="hero-left">
     <p class="hero-label">Temitope Ajijola Empowerment and Leadership Foundation</p>
@@ -268,6 +270,7 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
     </div>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+  </div>
 </section>
 
 <!-- ABOUT -->
