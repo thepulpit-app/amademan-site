@@ -162,9 +162,9 @@ section{padding:8rem 4rem}
 .gallery{background:var(--cream-2);border-bottom:1px solid var(--border)}
 .gallery-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem}
 .gallery-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:var(--espresso);letter-spacing:-0.02em}
-.gallery-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr;grid-template-rows:260px 200px;gap:6px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:6px}
+.gallery-grid .g-item:first-child{grid-column:span 2;grid-row:span 2}
 .g-item{background:var(--cream-3);border:1px solid var(--border);position:relative;overflow:hidden;cursor:pointer}
-.g-item:first-child{grid-row:1/3}
 .g-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:var(--muted);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase}
 .g-ph svg{width:22px;height:22px;stroke:var(--muted);fill:none;opacity:0.4}
 .g-hover{position:absolute;inset:0;background:rgba(26,14,14,0.55);display:flex;align-items:flex-end;padding:1.25rem;opacity:0;transition:opacity 0.3s}
@@ -220,7 +220,8 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
   .app-grid{grid-template-columns:1fr 1fr}
   .pillars-grid{grid-template-columns:1fr 1fr}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-  .g-item:first-child{grid-row:auto}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .gallery-grid .g-item:first-child{grid-column:span 2;grid-row:span 1}
   section{padding:5rem 1.5rem}
   .footer-inner{grid-template-columns:1fr;gap:2.5rem}
 }
@@ -265,6 +266,62 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
   .hero-stats { flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
   .hero-scroll { display: none !important; }
 }
+
+/* ── MOBILE NAV ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s ease;
+}
+nav.scrolled .nav-burger span { background: var(--espresso); }
+.nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+@media screen and (max-width: 960px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--espresso);
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 150;
+  }
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-links a {
+    font-size: 1.1rem !important;
+    color: rgba(244,239,230,0.6) !important;
+    letter-spacing: 0.2em;
+  }
+  .nav-links a:hover { color: var(--cream) !important; }
+  .nav-portal {
+    font-size: 0.85rem !important;
+    margin-top: 1rem;
+    padding: 0.75rem 2rem !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -278,7 +335,10 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
       <div class="nav-wordmark-sub">Men &middot; Advocacy &middot; Direction &middot; Excellence</div>
     </div>
   </a>
-  <ul class="nav-links">
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#programmes">Programmes</a></li>
     <li><a href="#convener">Convener</a></li>
@@ -360,7 +420,9 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
   <div class="max">
     <div class="convener-grid">
       <div class="convener-img-wrap fade-up">
-        <div class="convener-img"><div class="convener-img-ph">Photo &mdash; Temitope Ajijola</div></div>
+        <div class="convener-img">
+          <img src="images/convener.jpg" alt="Temitope Ajijola — Convener, A MADE MAN" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block"/>
+        </div>
       </div>
       <div class="fade-up">
         <div class="sec-num">&#8212; III</div>
@@ -390,8 +452,8 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
           <div class="conf-meta-row"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>The Grand Assembly Place, Maryland, Lagos</div>
         </div>
         <div class="conf-btns">
-          <a href="/conference" class="btn-cream">Conference Details</a>
-          <a href="/conference#register" class="btn-outline-light">Register Now</a>
+          <span class="btn-cream" style="cursor:default;opacity:0.7">Conference Details</span>
+          <span class="btn-outline-light" style="cursor:default;opacity:0.5">Registration Coming Soon</span>
         </div>
       </div>
       <div class="conf-right">
@@ -435,11 +497,54 @@ footer{background:var(--espresso);border-top:1px solid rgba(244,239,230,0.08);pa
       <a href="/conference#gallery" class="btn-outline" style="font-size:.7rem">View All</a>
     </div>
     <div class="gallery-grid">
-      <div class="g-item fade-up"><div class="g-ph"><svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Add Conference Photo</div><div class="g-hover"><span>HE-MOTION 2026</span></div></div>
-      <div class="g-item fade-up"><div class="g-ph"><svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Add Photo</div><div class="g-hover"><span>Keynote</span></div></div>
-      <div class="g-item fade-up"><div class="g-ph"><svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Add Photo</div><div class="g-hover"><span>Workshops</span></div></div>
-      <div class="g-item fade-up"><div class="g-ph"><svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Add Photo</div><div class="g-hover"><span>Community</span></div></div>
-      <div class="g-item fade-up"><div class="g-ph"><svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Add Photo</div><div class="g-hover"><span>Previous Editions</span></div></div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-1.jpg" alt="HE-MOTION 2026" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>HE-MOTION 2026</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-2.jpg" alt="Keynote Session" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Keynote Session</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-3.jpg" alt="Workshops" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Workshops</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-4.jpg" alt="Community" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Community</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-5.jpg" alt="The Room" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>The Room</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-6.jpg" alt="Built Different" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Built Different</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-7.jpg" alt="Leadership" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Leadership</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-8.jpg" alt="Next Generation" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Next Generation</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-9.jpg" alt="Mentorship" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Mentorship</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-10.jpg" alt="Speakers" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Speakers</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-11.jpg" alt="Breakthrough" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Breakthrough</span></div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/gallery-12.jpg" alt="Made Men" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        <div class="g-hover"><span>Made Men</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -512,6 +617,23 @@ document.getElementById('fsub').addEventListener('click', function(){
   this.textContent = 'Message Sent'; this.style.background = '#3B1010'; this.style.color = '#F4EFE6';
   setTimeout(() => { this.textContent = 'Send Message'; this.style.background = ''; this.style.color = ''; }, 3000);
 });
+
+  // Mobile nav burger
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  // Close nav when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 </body>
 </html>
